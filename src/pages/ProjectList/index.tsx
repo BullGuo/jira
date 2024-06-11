@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import * as qs from 'qs'
-import { useDebounce } from '../../utils'
 import SearchPanel from './SearchPanel'
 import List from './List'
-import { cleanObject, useMount } from '~/utils'
+import { cleanObject, useDebounce, useMount } from '~/utils'
 
 export default function ProjectList() {
   const [param, setParam] = useState({ name: '', personId: '' })

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-export const isFalsy = value => value === 0 ? false : !value
+export const isFalsy = (value: any) => value === 0 ? false : !value
 
-export function cleanObject(object) {
+export function cleanObject(object: Record<string, any>) {
   const newObject = { ...object }
   Object.keys(newObject).forEach((key) => {
     const value = newObject[key]
@@ -12,13 +12,13 @@ export function cleanObject(object) {
   return newObject
 }
 
-export function useMount(callback) {
+export function useMount(callback: Function) {
   useEffect(() => {
     callback()
   }, [])
 }
 
-export function useDebounce(value, delay) {
+export function useDebounce(value: any, delay: number) {
   const [debouncedValue, setDebouncedValue] = useState(value)
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedValue(value), delay)
