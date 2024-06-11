@@ -1,7 +1,9 @@
+import ProjectList from '~/pages/ProjectList'
+
 function App() {
   return (
     <div>
-      Hello World
+      <ProjectList />
     </div>
   )
 }
