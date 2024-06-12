@@ -4,6 +4,8 @@ import SearchPanel from './SearchPanel'
 import List from './List'
 import { cleanObject, useDebounce, useMount } from '~/utils'
 
+const apiUrl = import.meta.env.VITE_API_URL
+
 export default function ProjectList() {
   const [param, setParam] = useState({ name: '', personId: '' })
   const [users, setUsers] = useState([])
@@ -11,14 +13,14 @@ export default function ProjectList() {
   const debounceParams = useDebounce(param, 500)
 
   useEffect(() => {
-    fetch(`http://localhost:3001/projects?${qs.stringify(cleanObject(debounceParams))}`).then(async (response) => {
+    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debounceParams))}`).then(async (response) => {
       if (response.ok)
         setList(await response.json())
     })
   }, [debounceParams])
 
   useMount(() => {
-    fetch(`http://localhost:3001/users`).then(async (response) => {
+    fetch(`${apiUrl}/users`).then(async (response) => {
       if (response.ok)
         setUsers(await response.json())
     })
